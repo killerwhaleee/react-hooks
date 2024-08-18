@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState, createContext } from "react";
+import Count from "./Count";
+
+export const CountContext = createContext();
 
 function App() {
+  const [count, setCount] = useState(0)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CountContext.Provider value={[count, setCount]}>
+      <Count />
+      <p className="text-2xl">App Count: {count}</p>
+    </CountContext.Provider>
   );
 }
 
